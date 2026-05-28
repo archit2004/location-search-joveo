@@ -25,7 +25,7 @@ JOVIO/
 
 ```bash
 # 1. clone the repo
-git clone <repo_url>
+git clone https://github.com/archit2004/location-search-joveo.git
 cd JOVIO
 
 # 2. create virtual environment
