@@ -43,8 +43,14 @@ python -m venv venv
 venv\Scripts\activate        # Windows
 source venv/bin/activate     # Mac/Linux
 
+
 # 4. install dependencies
 pip install -r requirements.txt
+
+> - Download Geonames: https://download.geonames.org/export/dump/IN.zip → extract to `IN_Places/`
+> - Download Pincodes: https://download.geonames.org/export/zip/IN.zip → extract to `IN_Pin/`
+> - Run all cells in `Training.ipynb`
+
 
 # 5. run the app
 streamlit run app.py
@@ -63,10 +69,7 @@ docker compose up --build
 # app available at http://localhost:8501
 ```
 
-> **Optional:** To regenerate `search_df.pkl` from scratch:
-> - Download Geonames: https://download.geonames.org/export/dump/IN.zip → extract to `IN_Places/`
-> - Download Pincodes: https://download.geonames.org/export/zip/IN.zip → extract to `IN_Pin/`
-> - Run all cells in `Training.ipynb`
+
 ## Usage
 
 ```python
