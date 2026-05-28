@@ -3,6 +3,9 @@
 A location search system for a job portal that supports autocomplete for cities, states, and pincodes across India.
 
 ## File Structure
+
+
+```python
 JOVIO/
 ├── Training.ipynb      # EDA + data processing + builds search index
 ├── Predict.ipynb       # Demo notebook showing search_location in action
@@ -15,6 +18,9 @@ JOVIO/
 └── IN_Pin/
     └── IN.txt          # India pincode dataset
 
+```
+
+![File Structure](assets/image.png)
 ## Setup
 
 ```bash
@@ -61,3 +67,6 @@ results = search_location("दिल्ली")   # hindi name
 3. **Search** — prefix matching using `str.startswith` on the search index
 4. **Ranking** — results sorted by population (higher population = more relevant)
 5. **Output** — structured JSON with entity_type, entity_name, coordinates, and normalized details
+
+
+![State Search](assets/App1.png)
