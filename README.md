@@ -21,43 +21,62 @@ JOVIO/
 ```
 
 ![File Structure](assets/image.png)
-## Setup
+
+
+## Setup & Run
+
+> **Note:** This repo uses Git LFS for `search_df.pkl` (~60MB).
+> Run `git lfs install` before cloning.
+
+### Option 1 — Local Setup
 
 ```bash
-# 1. clone the repo
-git clone https://github.com/archit2004/location-search-joveo.git
-cd JOVIO
+# 1. install git lfs (one time only)
+git lfs install
 
-# 2. create virtual environment
+# 2. clone the repo (search_df.pkl downloads automatically)
+git clone https://github.com/archit2004/location-search-joveo.git
+cd location-search-joveo
+
+# 3. create virtual environment
 python -m venv venv
 venv\Scripts\activate        # Windows
 source venv/bin/activate     # Mac/Linux
 
-# 3. install dependencies
+# 4. install dependencies
 pip install -r requirements.txt
 
-# 4. download datasets
-# Geonames: https://download.geonames.org/export/dump/IN.zip → extract to IN_Places/
-# Pincodes:  https://download.geonames.org/export/zip/IN.zip  → extract to IN_Pin/
-
-# 5. run Training.ipynb to build search_df.pkl
-# open Training.ipynb in Jupyter and run all cells
-# this generates search_df.pkl (~60MB) locally
-
-# 6. (optional) test search function directly
-python predict.py
-
-# 7. run the app
+# 5. run the app
 streamlit run app.py
+```
+
+### Option 2 — Docker
+
+```bash
+# 1. install git lfs and clone
+git lfs install
+git clone https://github.com/archit2004/location-search-joveo.git
+cd location-search-joveo
+
+# 2. build and run
+docker compose up --build
+# app available at http://localhost:8501
+```
+
+> **Optional:** To regenerate `search_df.pkl` from scratch:
+> - Download Geonames: https://download.geonames.org/export/dump/IN.zip → extract to `IN_Places/`
+> - Download Pincodes: https://download.geonames.org/export/zip/IN.zip → extract to `IN_Pin/`
+> - Run all cells in `Training.ipynb`
+## Usage
 
 ```python
 from predict import search_location
 
-results = search_location("west b")   # state
-results = search_location("mumb")     # city  
-results = search_location("110001")   # pincode
+results = search_location("west b")    # state
+results = search_location("mumb")      # city
+results = search_location("110001")    # pincode
 results = search_location("bengaluru") # alternate name
-results = search_location("दिल्ली")   # hindi name
+results = search_location("दिल्ली")    # hindi name
 ```
 
 ## How it works

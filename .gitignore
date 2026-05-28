@@ -13,7 +13,7 @@ IN_Pin/*
 !IN_Places/.gitkeep
 !IN_Pin/.gitkeep
 # generated search index (too large, run Training.ipynb to generate)
-search_df.pkl
+
 
 # jupyter checkpoints
 .ipynb_checkpoints/
