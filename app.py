@@ -17,7 +17,7 @@ if query:
         st.warning("No results found")
     else:
         names = [r['entity_name'] for r in results]
-        selected = st.selectbox("Select location", names)
+        selected = st.selectbox("Possible Locations", names)
         
         selected_result = results[names.index(selected)]
         
