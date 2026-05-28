@@ -10,15 +10,19 @@ def search_location(user_input, limit=10):
     
     query = user_input.strip().lower()
     
+
     if len(query) == 0:
         return []
     
+
+    #find the query from the search df
     mask = search_df['search_term'].str.startswith(query, na=False)
     results = search_df[mask].copy()
     
     if len(results) == 0:
         return []
     
+    # deop suplicate locations with same geo id
     results = results.drop_duplicates(subset='geonameid')
     results = results.sort_values('population', ascending=False, na_position='last')
     
@@ -28,7 +32,7 @@ def search_location(user_input, limit=10):
         
         if row['entity_type'] == 'state':
             entry = {
-                'matched_term':  row['search_term'],   # debug field
+                
                 'entity_type': 'state',
                 'entity_name': row['entity_name'],
                 'latitude':    row['latitude'],
@@ -37,7 +41,6 @@ def search_location(user_input, limit=10):
         
         elif row['entity_type'] == 'city':
             entry = {
-                'matched_term':  row['search_term'],   # debug field
                 'entity_type': 'city',
                 'entity_name': str(row['entity_name']) + ', ' + str(row['state']),
                 'latitude':    row['latitude'],
@@ -71,13 +74,12 @@ def search_location(user_input, limit=10):
     
     return output
 
-if __name__ == "__main__":
-    import json
-    print("\n test pincode ")
-    print(json.dumps(search_location("6320"), indent=2, default=str))
+import json
+print("\n test pincode ")
+print(json.dumps(search_location("208"), indent=2, default=str))
 
-    print("\n test city")
-    print(json.dumps(search_location("mumb"), indent=2, default=str))
+# print("\n test city")
+# print(json.dumps(search_location("mumb"), indent=2, default=str))
 
-    print("\n test state")
-    print(json.dumps(search_location("west b"), indent=2, default=str))
+# print("\n test state")
+# print(json.dumps(search_location("west b"), indent=2, default=str))

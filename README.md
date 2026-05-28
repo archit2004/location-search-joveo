@@ -70,3 +70,9 @@ results = search_location("दिल्ली")   # hindi name
 
 
 ![State Search](assets/App1.png)
+![State Search](assets/App_state1.png)
+![State Search](assets/App_state2.png)
+![City Search](assets/App_city1.png)
+![City Search](assets/App_city2.png)
+![PIN Search](assets/App_pin1.png)
+![PIN Search](assets/App_pin2.png)
